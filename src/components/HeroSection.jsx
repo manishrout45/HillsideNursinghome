@@ -5,34 +5,34 @@ import { Play, Stethoscope, Clock3, Cross } from "lucide-react";
 export default function HeroSection() {
   return (
     <section className="relative overflow-hidden">
-      {/* Main Hero */}
+      {/* Hero */}
       <div className="bg-[#EEF7E3]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-14 lg:pt-16 pb-32">
-          <div className="grid lg:grid-cols-2 items-center gap-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 lg:pt-16 pb-24 lg:pb-32">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
             {/* Left Content */}
-            <div className="relative z-10 ml-16">
-              <h1 className="max-w-md text-[48px] leading-[1.2] font-semibold text-[#1f5f97]">
+            <div className="relative z-10 text-center lg:text-left">
+              <h1 className="text-4xl font-semibold leading-tight text-[#1f5f97] sm:text-5xl lg:text-6xl">
                 Trusted Healthcare
-                
+                <br />
                 Compassionate Care
-                
+                <br />
                 For Every Family
               </h1>
 
-              <p className="mt-6 max-w-sm text-[15px] text-[#7f9b9c] leading-7">
+              <p className="mx-auto mt-6 max-w-lg text-[15px] leading-7 text-[#7f9b9c] lg:mx-0">
                 At Hillside Nursing Home, we are dedicated to providing quality
-  healthcare with experienced doctors, modern facilities, and
-  compassionate care. Your health, comfort, and recovery remain our
-  highest priority every day.
+                healthcare with experienced doctors, modern facilities, and
+                compassionate care. Your health, comfort, and recovery remain
+                our highest priority every day.
               </p>
 
-              <div className="mt-8 flex items-center gap-8">
-                <button className="border border-[#84C221] px-8 py-3 text-sm text-[#84C221] font-medium hover:bg-[#84C221] hover:text-white transition">
+              <div className="mt-8 flex flex-col items-center gap-5 sm:flex-row sm:justify-center lg:justify-start">
+                <button className="rounded-md border border-[#84C221] px-8 py-3 text-sm font-medium text-[#84C221] transition hover:bg-[#84C221] hover:text-white">
                   Book Appointment
                 </button>
 
                 <button className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-[#84C221] border-[4px] border-[#1f5f97] flex items-center justify-center shadow-lg">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full border-4 border-[#1f5f97] bg-[#84C221] shadow-lg">
                     <Play
                       size={16}
                       fill="white"
@@ -48,24 +48,19 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Right Image Area */}
-            <div className="relative flex justify-center lg:justify-end mr-12">
-              {/* Decorative Plus */}
-              <span className="absolute -top-4 left-8 text-[#84C221] text-6xl font-light">
+            {/* Right Image */}
+            <div className="relative flex justify-center lg:justify-end">
+              <span className="absolute left-4 top-0 hidden text-6xl font-light text-[#84C221] lg:block">
                 +
               </span>
 
-              {/* Nurse Image */}
-              <div className="relative flex justify-center lg:justify-end">
-                <img
-                  src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=900"
-                  alt="Nurse"
-                  className="h-[420px] w-auto object-contain"
-                />
-              </div>
+              <img
+                src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=900"
+                alt="Healthcare"
+                className="w-full max-w-xs object-contain sm:max-w-sm md:max-w-md lg:max-w-lg"
+              />
 
-              {/* Decorative Plus */}
-              <span className="absolute bottom-6 left-[-40px] text-[#84C221] text-5xl font-light">
+              <span className="absolute bottom-8 left-0 hidden text-5xl font-light text-[#84C221] lg:block">
                 +
               </span>
             </div>
@@ -74,10 +69,10 @@ export default function HeroSection() {
       </div>
 
       {/* Feature Cards */}
-      <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-12 -mt-24">
-        <div className="grid md:grid-cols-3 shadow-2xl">
+      <div className="relative z-20 mx-auto -mt-12 max-w-7xl px-4 sm:px-6 lg:-mt-20 lg:px-8">
+        <div className="grid overflow-hidden rounded-2xl shadow-2xl md:grid-cols-3">
           {/* Card 1 */}
-          <div className="bg-[#84C221] text-white px-8 py-12 text-center">
+          <div className="bg-[#84C221] px-8 py-10 text-center text-white">
             <Clock3
               size={50}
               strokeWidth={1.2}
@@ -88,45 +83,45 @@ export default function HeroSection() {
               24/7 Emergency Care
             </h3>
 
-            <p className="mt-4 text-sm text-white/90 leading-7">
+            <p className="mt-4 text-sm leading-7 text-white/90">
               Immediate medical attention from our experienced healthcare
-  professionals whenever you need urgent care.
+              professionals whenever you need urgent care.
             </p>
           </div>
 
           {/* Card 2 */}
-          <div className="bg-[#f5f5f5] border-r border-gray-300 px-8 py-12 text-center">
+          <div className="border-y border-gray-200 bg-[#f5f5f5] px-8 py-10 text-center md:border-x md:border-y-0">
             <Stethoscope
               size={50}
               strokeWidth={1.2}
               className="mx-auto mb-5 text-[#84C221]"
             />
 
-            <h3 className="text-2xl font-medium text-[#1d5d99]">
+            <h3 className="text-2xl font-semibold text-[#1f5f97]">
               Expert Medical Team
             </h3>
 
-            <p className="mt-4 text-sm text-gray-500 leading-7">
-              Our qualified doctors, nurses, and specialists provide personalized
-  treatment with compassion and clinical excellence.
+            <p className="mt-4 text-sm leading-7 text-gray-500">
+              Our qualified doctors, nurses, and specialists provide
+              personalized treatment with compassion and clinical excellence.
             </p>
           </div>
 
           {/* Card 3 */}
-          <div className="bg-[#f5f5f5] px-8 py-12 text-center">
+          <div className="bg-[#f5f5f5] px-8 py-10 text-center">
             <Cross
               size={50}
               strokeWidth={1.2}
               className="mx-auto mb-5 text-[#84C221]"
             />
 
-            <h3 className="text-2xl font-medium text-[#1f5f97]">
+            <h3 className="text-2xl font-semibold text-[#1f5f97]">
               Advanced Diagnostics
             </h3>
 
-            <p className="mt-4 text-sm text-gray-500 leading-7">
+            <p className="mt-4 text-sm leading-7 text-gray-500">
               Equipped with modern diagnostic technology to ensure accurate
-  diagnosis and effective treatment for every patient.
+              diagnosis and effective treatment for every patient.
             </p>
           </div>
         </div>

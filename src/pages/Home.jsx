@@ -7,7 +7,9 @@ import GallerySection from "../components/GallerySection";
 import ContactSection from "../components/ContactSection";
 import StatsSection from "../components/StatsSection";
 import WhyChooseUs from "../components/WhyChooseUs";
+import ClinicalEnvironment from "../components/ClinicalEnvironment";
 import CTASection from "../components/CTASection";
+import EquipmentSection from "../components/EquipmentSection";
 
 const Home = () => {
   useScrollFade(); // default class "fade-up"
@@ -18,6 +20,8 @@ const Home = () => {
       <AboutSection className="fade-right" />
       <ServiceSection className="fade-left" />
       <WhyChooseUs />
+      <ClinicalEnvironment />
+      <EquipmentSection />
       <StatsSection />
       <Testimonial />
       <ContactSection className="fade-up" />

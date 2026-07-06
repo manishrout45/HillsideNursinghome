@@ -35,7 +35,7 @@ export default function AboutSection() {
           {/* Left Image */}
           <div className="flex justify-center lg:justify-start">
             <img
-              src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=800"
+              src="https://img.magnific.com/premium-photo/any-discomfort-all-full-length-shot-young-male-physiotherapist-assisting-senior-patient-recovery_590464-12104.jpg?ga=GA1.1.367325703.1777638219&semt=ais_hybrid&w=740&q=80"
               alt="Nursing Care"
               className="w-[380px] h-[500px] object-cover"
             />

@@ -151,7 +151,7 @@ export default function StatsSection() {
             {/* Image */}
             <div className="flex justify-center lg:justify-start">
               <img
-                src="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=900"
+                src="https://img.magnific.com/premium-photo/senior-man-physiotherapy-leg-with-stretching-join-recovery-support-rehabilitation-bed-consultation-patient-with-exercise-help-knee-pain-inflammation-joint-strength_590464-422005.jpg?ga=GA1.1.367325703.1777638219&semt=ais_hybrid&w=740&q=80"
                 alt="Home Care"
                 className="w-[400px] h-[300px] object-cover"
               />

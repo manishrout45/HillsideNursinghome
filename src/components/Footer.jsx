@@ -98,17 +98,18 @@ export default function Footer() {
             <div className="space-y-5 text-[15px]">
               <div className="flex items-start gap-3">
                 <MapPin className="mt-1 shrink-0" size={18} />
-                <span>Plaza Y Floor, 1 Street, XYZ</span>
+                <span>Khandagiri, Bhubaneswar</span>
               </div>
 
               <div className="flex items-center gap-3">
                 <Mail size={18} />
-                <span>yourname@email.com</span>
+                <span>hillside@adyantwellness.com</span>
               </div>
 
               <div className="flex items-center gap-3">
                 <Phone size={18} />
-                <span>+123-456-7890</span>
+                <span>+91 8245446860</span>
+                <span>+91 9090863974</span>
               </div>
             </div>
           </div>

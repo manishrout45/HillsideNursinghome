@@ -9,13 +9,13 @@ export default function ContactSection() {
       <Plus
         size={48}
         strokeWidth={2.5}
-        className="absolute top-10 right-40 text-[#f3c3b8]"
+        className="absolute top-10 right-40 text-[#84C221]"
       />
 
       <HeartHandshake
         size={46}
         strokeWidth={1.7}
-        className="absolute bottom-8 left-24 text-[#f3c3b8]"
+        className="absolute bottom-8 left-24 text-[#84C221]"
       />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -23,7 +23,7 @@ export default function ContactSection() {
           {/* Left Image */}
           <div className="flex justify-center lg:justify-start">
             <img
-              src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=900"
+              src="https://img.magnific.com/free-photo/medium-shot-physiotherapist-checking-leg_23-2149047551.jpg?ga=GA1.1.367325703.1777638219&semt=ais_hybrid&w=740&q=80"
               alt="Appointment"
               className="w-[380px] h-[470px] object-cover"
             />
@@ -79,7 +79,7 @@ export default function ContactSection() {
 
               <button
                 type="submit"
-                className="mt-2 bg-[#ef2f63] px-8 py-3 text-[14px] font-semibold text-white transition hover:bg-[#e02658]"
+                className="mt-2 bg-[#84C221] px-8 py-3 text-[14px] font-semibold text-white transition hover:bg-[#98db2b]"
               >
                 Book Appointment
               </button>
