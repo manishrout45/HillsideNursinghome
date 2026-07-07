@@ -1,6 +1,5 @@
-// WhyChooseUs.jsx
-
 import { CheckCheck, Plus } from "lucide-react";
+import { motion } from "framer-motion";
 
 const features = [
   {
@@ -17,52 +16,149 @@ const features = [
   },
 ];
 
+// Animation Variants
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.18,
+    },
+  },
+};
+
+const fadeLeft = {
+  hidden: {
+    opacity: 0,
+    x: -60,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+};
+
+const fadeRight = {
+  hidden: {
+    opacity: 0,
+    x: 60,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+};
+
+const fadeUp = {
+  hidden: {
+    opacity: 0,
+    y: 35,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
 export default function WhyChooseUs() {
   return (
     <section className="relative overflow-hidden bg-[#1f5f97] py-20 lg:py-24">
       {/* Decorative Plus */}
-      <Plus
-        size={48}
-        strokeWidth={2.5}
-        className="absolute bottom-8 right-20 text-[#84C221]"
-      />
+      <motion.div
+        initial={{ opacity: 0, scale: 0.5, rotate: -90 }}
+        whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <Plus
+          size={48}
+          strokeWidth={2.5}
+          className="absolute bottom-8 right-20 text-[#84C221]"
+        />
+      </motion.div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid lg:grid-cols-2 gap-10 items-center">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="grid items-center gap-10 lg:grid-cols-2">
           {/* Left Content */}
-          <div className="max-w-[460px]">
-            <span className="text-[16px] font-medium text-[#84C221]">
+          <motion.div
+            className="max-w-[460px]"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.25 }}
+          >
+            <motion.span
+              variants={fadeLeft}
+              className="text-[16px] font-medium text-[#84C221]"
+            >
               Why Choose Hillside Nursing Home
-            </span>
+            </motion.span>
 
-            <h2 className="mt-3 text-[38px] lg:text-[44px] leading-[1.2] font-medium text-white">
-              Trusted Healthcare with 
+            <motion.h2
+              variants={fadeLeft}
+              className="mt-3 text-[38px] font-medium leading-[1.2] text-white lg:text-[44px]"
+            >
+              Trusted Healthcare with
+              <br />
               Compassion & Excellence
-            </h2>
+            </motion.h2>
 
-            <p className="mt-4 text-[15px] leading-7 text-white/90">
-              Hillside Nursing Home combines experienced healthcare professionals, 
-              modern medical facilities, and compassionate patient care to provide safe, 
-              effective, and personalized treatment for every individual and family.
-            </p>
+            <motion.p
+              variants={fadeLeft}
+              className="mt-4 text-[15px] leading-7 text-white/90"
+            >
+              Hillside Nursing Home combines experienced healthcare
+              professionals, modern medical facilities, and compassionate
+              patient care to provide safe, effective, and personalized
+              treatment for every individual and family.
+            </motion.p>
 
             {/* Feature Cards */}
-            <div className="mt-8 space-y-3">
+            <motion.div
+              variants={containerVariants}
+              className="mt-8 space-y-3"
+            >
               {features.map((item, index) => (
-                <div
+                <motion.div
                   key={index}
-                  className="flex items-center gap-4 bg-[#ffffff] px-5 py-5"
+                  variants={fadeUp}
+                  whileHover={{
+                    x: 8,
+                    scale: 1.02,
+                    boxShadow: "0 20px 40px rgba(0,0,0,.15)",
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className="flex items-center gap-4 bg-white px-5 py-5"
                 >
-                  {/* Icon Box */}
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#84C221]">
+                  {/* Icon */}
+                  <motion.div
+                    whileHover={{
+                      rotate: 360,
+                    }}
+                    transition={{
+                      duration: 0.6,
+                    }}
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#84C221]"
+                  >
                     <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20">
                       <CheckCheck
                         size={14}
-                        className="text-white"
                         strokeWidth={2.5}
+                        className="text-white"
                       />
                     </div>
-                  </div>
+                  </motion.div>
 
                   <div>
                     <h3 className="text-[18px] font-medium text-[#84C221]">
@@ -73,19 +169,31 @@ export default function WhyChooseUs() {
                       {item.desc}
                     </p>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Right Image */}
-          <div className="flex justify-center lg:justify-end">
-            <img
+          <motion.div
+            className="flex justify-center lg:justify-end"
+            variants={fadeRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <motion.img
               src="/assets/images/HSN-3.jpg"
               alt="Care Service"
-              className="w-[380px] h-[540px] object-cover"
+              className="h-[540px] w-[380px] object-cover"
+              whileHover={{
+                scale: 1.04,
+              }}
+              transition={{
+                duration: 0.4,
+              }}
             />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

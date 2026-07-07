@@ -1,6 +1,40 @@
 // AboutSection.jsx
 
 import { Plus, HeartHandshake, TimerReset } from "lucide-react";
+import { motion } from "framer-motion";
+
+const fadeLeft = {
+  hidden: { opacity: 0, x: -80 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.8,
+    },
+  },
+};
+
+const fadeRight = {
+  hidden: { opacity: 0, x: 80 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.8,
+    },
+  },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 50 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+    },
+  },
+};
 
 export default function AboutSection() {
   return (
@@ -12,11 +46,6 @@ export default function AboutSection() {
         strokeWidth={2}
       />
 
-      <Plus
-        className="absolute bottom-6 left-[38%] text-[#84C221]"
-        size={48}
-        strokeWidth={2}
-      />
 
       <TimerReset
         className="absolute top-5 right-10 text-[#84C221]"
@@ -33,16 +62,27 @@ export default function AboutSection() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Image */}
-          <div className="flex justify-center lg:justify-start">
+          <motion.div
+            className="flex justify-center lg:justify-start"
+            variants={fadeLeft}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+          >
             <img
               src="https://img.magnific.com/premium-photo/any-discomfort-all-full-length-shot-young-male-physiotherapist-assisting-senior-patient-recovery_590464-12104.jpg?ga=GA1.1.367325703.1777638219&semt=ais_hybrid&w=740&q=80"
               alt="Nursing Care"
               className="w-[380px] h-[500px] object-cover"
             />
-          </div>
+          </motion.div>
 
           {/* Right Content */}
-          <div>
+          <motion.div
+            variants={fadeRight}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+          >
             <span className="text-[#84C221] text-[18px] font-medium">
               About Us
             </span>
@@ -53,13 +93,20 @@ export default function AboutSection() {
 
             <p className="mt-5 max-w-[520px] text-[15px] leading-7 text-[#8b8b8b]">
               Hillside Nursing Home is committed to delivering exceptional healthcare
-  through experienced doctors, skilled nursing staff, and modern medical
-  facilities. We focus on providing personalized treatment in a safe,
-  comfortable, and caring environment for every patient.
+              through experienced doctors, skilled nursing staff, and modern medical
+              facilities. We focus on providing personalized treatment in a safe,
+              comfortable, and caring environment for every patient.
             </p>
 
             {/* Stats Cards */}
-            <div className="mt-8 flex flex-wrap w-fit shadow-xl">
+            <motion.div
+              className="mt-8 flex flex-wrap w-fit shadow-xl"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+            >
               <div className="min-w-[200px] bg-white px-12 py-8 text-center">
                 <h3 className="text-[42px] font-semibold text-[#84C221]">
                   15+
@@ -79,19 +126,23 @@ export default function AboutSection() {
                   Happy Patients Treated
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             <p className="mt-10 max-w-[520px] text-[15px] leading-7 text-[#8b8b8b]">
               From preventive healthcare and diagnostics to specialized treatments and
-  emergency medical services, our dedicated team is committed to ensuring
-  the highest standards of patient care with compassion, integrity, and
-  professionalism.
+              emergency medical services, our dedicated team is committed to ensuring
+              the highest standards of patient care with compassion, integrity, and
+              professionalism.
             </p>
 
-            <button className="mt-8 border border-[#84C221] px-10 py-3 text-[15px] font-medium text-[#84C221] transition-all duration-300 hover:bg-[#84C221] hover:text-white">
+            <motion.button
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }} className="mt-8 border border-[#84C221] px-10 py-3 text-[15px] font-medium text-[#84C221] transition-all duration-300 hover:bg-[#84C221] hover:text-white">
               Learn More
-            </button>
-          </div>
+            </motion.button>
+          </motion.div>
         </div>
       </div>
     </section>

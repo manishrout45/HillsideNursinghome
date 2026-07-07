@@ -1,12 +1,10 @@
-// StatsSection.jsx
-
+import { useEffect, useRef, useState } from "react";
 import {
   UserRound,
   Stethoscope,
   Bed,
   Clock3,
   Plus,
-  Activity,
   TimerReset,
 } from "lucide-react";
 
@@ -43,13 +41,74 @@ const progress = [
   { name: "Emergency Response", value: 95 },
 ];
 
-export default function StatsSection() {
+function Counter({ value, animate }) {
+  const [count, setCount] = useState(0);
+
+  const number = parseInt(value.replace(/\D/g, ""));
+  const prefix = value.match(/^\D+/)?.[0] || "";
+  const suffix = value.match(/\D+$/)?.[0] || "";
+
+  useEffect(() => {
+    if (!animate) return;
+
+    let start = 0;
+    const duration = 1800;
+    const increment = number / (duration / 16);
+
+    const timer = setInterval(() => {
+      start += increment;
+
+      if (start >= number) {
+        setCount(number);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [animate, number]);
+
+  if (number === 0) return value;
+
   return (
-    <section className="relative overflow-hidden">
+    <>
+      {prefix}
+      {count}
+      {suffix}
+    </>
+  );
+}
+
+export default function StatsSection() {
+  const sectionRef = useRef(null);
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setAnimate(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.3,
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section ref={sectionRef} className="relative overflow-hidden">
       {/* Top Section */}
       <div className="bg-[#f5f5f5] pt-14 pb-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          {/* Heading */}
           <div className="max-w-3xl mx-auto text-center">
             <span className="text-[#84C221] text-[18px] font-medium">
               Our Strengths
@@ -60,13 +119,13 @@ export default function StatsSection() {
             </h2>
 
             <p className="mt-4 text-[15px] leading-7 text-[#8e8e8e]">
-              We are dedicated to providing exceptional healthcare through experienced
-              medical professionals, advanced technology, compassionate nursing, and
-              patient-centered treatment in a safe and comfortable environment.
+              We are dedicated to providing exceptional healthcare through
+              experienced medical professionals, advanced technology,
+              compassionate nursing, and patient-centered treatment in a safe
+              and comfortable environment.
             </p>
           </div>
 
-          {/* Stats Cards */}
           <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 shadow-xl">
             {stats.map((item, index) => {
               const Icon = item.icon;
@@ -97,7 +156,10 @@ export default function StatsSection() {
                         : "text-[#84C221]"
                     }`}
                   >
-                    {item.value}
+                    <Counter
+                      value={item.value}
+                      animate={animate}
+                    />
                   </h3>
 
                   <p
@@ -118,7 +180,6 @@ export default function StatsSection() {
 
       {/* Bottom Section */}
       <div className="relative overflow-hidden bg-[#EEF7E3] py-20">
-        {/* Background Pattern */}
         <div className="absolute inset-0 opacity-[0.04]">
           <img
             src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=1600"
@@ -127,17 +188,10 @@ export default function StatsSection() {
           />
         </div>
 
-        {/* Decorative Icons */}
         <Plus
           size={46}
           strokeWidth={2.5}
           className="absolute top-24 left-[38%] text-[#84C221]"
-        />
-
-        <Plus
-          size={34}
-          strokeWidth={2.5}
-          className="absolute bottom-6 left-[38%] text-[#84C221]"
         />
 
         <TimerReset
@@ -148,7 +202,6 @@ export default function StatsSection() {
 
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
-            {/* Image */}
             <div className="flex justify-center lg:justify-start">
               <img
                 src="https://img.magnific.com/premium-photo/senior-man-physiotherapy-leg-with-stretching-join-recovery-support-rehabilitation-bed-consultation-patient-with-exercise-help-knee-pain-inflammation-joint-strength_590464-422005.jpg?ga=GA1.1.367325703.1777638219&semt=ais_hybrid&w=740&q=80"
@@ -157,7 +210,6 @@ export default function StatsSection() {
               />
             </div>
 
-            {/* Content */}
             <div>
               <span className="text-[#84C221] text-[18px] font-medium">
                 Why Patients Trust Us
@@ -165,12 +217,12 @@ export default function StatsSection() {
 
               <h2 className="mt-3 text-[38px] leading-tight font-medium text-[#1f5f97]">
                 Delivering Quality Medical
+                <br />
                 Care with Compassion
               </h2>
 
-              {/* Progress Bars */}
               <div className="mt-7 space-y-6">
-                {progress.map((item, index) => (
+                              {progress.map((item, index) => (
                   <div key={index}>
                     <div className="mb-2 flex items-center justify-between">
                       <span className="text-[17px] text-[#6f6f6f]">
@@ -182,10 +234,12 @@ export default function StatsSection() {
                       </span>
                     </div>
 
-                    <div className="h-[7px] rounded-full bg-[#1f5f97]">
+                    <div className="h-[7px] overflow-hidden rounded-full bg-[#1f5f97]">
                       <div
-                        className="h-full rounded-full bg-[#84C221]"
-                        style={{ width: `${item.value}%` }}
+                        className="h-full rounded-full bg-[#84C221] transition-all duration-[1800ms] ease-out"
+                        style={{
+                          width: animate ? `${item.value}%` : "0%",
+                        }}
                       />
                     </div>
                   </div>

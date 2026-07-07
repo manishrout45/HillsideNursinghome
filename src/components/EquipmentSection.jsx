@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 const equipments = [
   {
@@ -45,13 +46,58 @@ const equipments = [
   },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const fadeLeft = {
+  hidden: {
+    opacity: 0,
+    x: -60,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+};
+
+const fadeUp = {
+  hidden: {
+    opacity: 0,
+    y: 50,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: "easeOut",
+    },
+  },
+};
+
 export default function EquipmentSection() {
   return (
     <section className="bg-white py-12 sm:py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[340px_1fr] xl:grid-cols-[400px_1fr]">
           {/* Left Side */}
-          <div className="h-fit lg:sticky lg:top-24">
+          <motion.div
+            className="h-fit lg:sticky lg:top-24"
+            variants={fadeLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
             <span className="text-base font-semibold text-[#84C221] sm:text-lg">
               Advanced Technology
             </span>
@@ -70,7 +116,13 @@ export default function EquipmentSection() {
               </span>
             </h2>
 
-            <div className="mt-5 h-1 w-20 rounded bg-[#84C221]" />
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: 80 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="mt-5 h-1 rounded bg-[#84C221]"
+            />
 
             <p className="mt-6 text-sm leading-7 text-gray-600 sm:text-base">
               Hillside Nursing Home is equipped with advanced surgical
@@ -78,22 +130,36 @@ export default function EquipmentSection() {
               diagnosis, minimally invasive procedures, and superior patient
               care.
             </p>
-          </div>
+          </motion.div>
 
           {/* Right Cards */}
-          <div className="space-y-6">
+          <motion.div
+            className="space-y-6"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+          >
             {equipments.map((item, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#84C221] hover:shadow-xl"
+                variants={fadeUp}
+                whileHover={{
+                  y: -8,
+                  boxShadow: "0 20px 45px rgba(0,0,0,.12)",
+                }}
+                transition={{ duration: 0.3 }}
+                className="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm"
               >
                 <div className="flex flex-col md:flex-row">
                   {/* Image */}
-                  <div className="overflow-hidden md:w-[250px] lg:w-[240px] xl:w-[260px] shrink-0">
-                    <img
+                  <div className="shrink-0 overflow-hidden md:w-[250px] lg:w-[240px] xl:w-[260px]">
+                    <motion.img
                       src={item.image}
                       alt={item.title}
-                      className="h-56 w-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110 md:h-full"
+                      className="h-56 w-full object-cover md:h-full"
+                      whileHover={{ scale: 1.08 }}
+                      transition={{ duration: 0.6 }}
                     />
                   </div>
 
@@ -107,15 +173,24 @@ export default function EquipmentSection() {
                       {item.description}
                     </p>
 
-                    <button className="mt-6 inline-flex w-fit items-center gap-2 text-sm font-semibold text-[#84C221] transition-all duration-300 group-hover:gap-4">
+                    <motion.button
+                      whileHover={{ x: 8 }}
+                      whileTap={{ scale: 0.96 }}
+                      className="mt-6 inline-flex w-fit items-center gap-2 text-sm font-semibold text-[#84C221]"
+                    >
                       Learn More
-                      <ArrowRight size={18} />
-                    </button>
+                      <motion.span
+                        whileHover={{ x: 4 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <ArrowRight size={18} />
+                      </motion.span>
+                    </motion.button>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

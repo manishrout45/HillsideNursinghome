@@ -5,9 +5,10 @@ import {
   HandHelping,
   HeartHandshake,
   PackagePlus,
-   TimerReset,
-   ChevronRight,
+  TimerReset,
+  ChevronRight,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const services = [
   {
@@ -20,7 +21,7 @@ const services = [
     subtitle: "Always Here For You",
     description:
       "Our experienced nursing team provides compassionate round-the-clock support for patients and their families.",
-    icon: Ambulance, // Optional if you want to display an icon in the highlight card
+    icon: Ambulance,
   },
   {
     title: "Physical Therapy",
@@ -41,20 +42,60 @@ const services = [
 ];
 
 const serviceDescriptions = {
-  "General Medicine":
-    "Comprehensive diagnosis and treatment for common illnesses and chronic health conditions.",
+  "Speech Therapy":
+    "Specialized therapy programs designed to improve speech, language, communication, and swallowing abilities.",
 
-  "General Surgery":
-    "Safe and advanced surgical procedures performed by experienced surgeons.",
+  "Physical Therapy":
+    "Personalized rehabilitation programs to restore mobility, strength, and overall physical function.",
 
-  "Diagnostic Services":
-    "Accurate laboratory testing and modern diagnostic imaging for effective treatment.",
+  "Occupational Therapy":
+    "Helping patients regain independence in daily living activities through expert therapeutic care.",
 
-  Pharmacy:
-    "Well-stocked pharmacy providing genuine medicines and healthcare essentials.",
+  "Nursing Care Services":
+    "Compassionate nursing support delivered by trained professionals with 24/7 patient monitoring.",
 
-  "Critical Care":
-    "Advanced intensive care with continuous monitoring for critically ill patients.",
+  "Nursing Home Supplies":
+    "Providing quality medical equipment and essential healthcare supplies for patient comfort.",
+};
+
+// Animation Variants
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const fadeUp = {
+  hidden: {
+    opacity: 0,
+    y: 50,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: "easeOut",
+    },
+  },
+};
+
+const zoomIn = {
+  hidden: {
+    opacity: 0,
+    scale: 0.9,
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
 };
 
 export default function ServiceSection() {
@@ -69,42 +110,66 @@ export default function ServiceSection() {
         />
       </div>
 
-      {/* Top Left Icon */}
-      <TimerReset
-        size={46}
-        strokeWidth={1.5}
-        className="absolute left-16 top-8 text-[#84C221]"
-      />
+      {/* Decorative Icon */}
+      <motion.div
+        initial={{ opacity: 0, rotate: -30, scale: 0.7 }}
+        whileInView={{ opacity: 1, rotate: 0, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <TimerReset
+          size={46}
+          strokeWidth={1.5}
+          className="absolute left-16 top-8 text-[#84C221]"
+        />
+      </motion.div>
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         {/* Heading */}
-        <div className="mx-auto max-w-3xl text-center">
+        <motion.div
+          className="mx-auto max-w-3xl text-center"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           <span className="text-[16px] font-medium text-[#84C221]">
             Our Medical Services
           </span>
 
           <h2 className="mt-3 text-[42px] font-medium leading-[1.2] text-[#1f5f97]">
-           Comprehensive Healthcare
+            Comprehensive Healthcare
             <br />
             Services Under One Roof
           </h2>
 
           <p className="mt-4 text-[15px] leading-7 text-[#8f9b9d]">
-            We provide a complete range of healthcare services supported by experienced
-doctors, skilled nursing professionals, advanced diagnostics, and modern
-medical facilities to ensure the best care for every patient.
+            We provide a complete range of healthcare services supported by
+            experienced doctors, skilled nursing professionals, advanced
+            diagnostics, and modern medical facilities to ensure the best care
+            for every patient.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Service Grid */}
-        <div className="mt-14 overflow-hidden shadow-xl">
+        {/* Services */}
+        <motion.div
+          className="mt-14 overflow-hidden shadow-xl"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
           <div className="grid md:grid-cols-3">
             {services.map((service, index) => {
-              // Special middle card
               if (service.type === "highlight") {
                 return (
-                  <div
+                  <motion.div
                     key={index}
+                    variants={zoomIn}
+                    whileHover={{
+                      scale: 1.03,
+                    }}
+                    transition={{ duration: 0.3 }}
                     className="flex min-h-[340px] flex-col items-center justify-center bg-[#84C221] px-8 text-center text-white"
                   >
                     <span className="text-sm uppercase tracking-[4px] text-white/80">
@@ -119,24 +184,45 @@ medical facilities to ensure the best care for every patient.
                       {service.description}
                     </p>
 
-                    <button className="mt-8 inline-flex items-center gap-2 border border-white px-6 py-3 text-sm transition hover:bg-white hover:text-[#84C221]">
+                    <motion.button
+                      whileHover={{
+                        scale: 1.05,
+                        backgroundColor: "#ffffff",
+                        color: "#84C221",
+                      }}
+                      whileTap={{ scale: 0.96 }}
+                      className="mt-8 inline-flex items-center gap-2 border border-white px-6 py-3 text-sm transition"
+                    >
                       Book Appointment
                       <ChevronRight size={16} />
-                    </button>
-                  </div>
+                    </motion.button>
+                  </motion.div>
                 );
               }
 
               const Icon = service.icon;
 
               return (
-                <div
+                <motion.div
                   key={index}
-                  className="border border-gray-200 bg-[#f7f7f7] px-8 py-10 text-center transition-all hover:bg-white"
+                  variants={fadeUp}
+                  whileHover={{
+                    y: -8,
+                    scale: 1.02,
+                    boxShadow: "0 20px 40px rgba(0,0,0,.08)",
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className="border border-gray-200 bg-[#f7f7f7] px-8 py-10 text-center"
                 >
-                  <div className="mb-5 flex justify-center text-[#84C221]">
+                  <motion.div
+                    className="mb-5 flex justify-center text-[#84C221]"
+                    whileHover={{
+                      rotate: 8,
+                      scale: 1.15,
+                    }}
+                  >
                     <Icon size={48} strokeWidth={1.3} />
-                  </div>
+                  </motion.div>
 
                   <h3 className="text-[20px] font-medium text-[#1f5f97]">
                     {service.title}
@@ -146,22 +232,39 @@ medical facilities to ensure the best care for every patient.
                     {serviceDescriptions[service.title]}
                   </p>
 
-                  <button className="mt-5 inline-flex items-center gap-1 text-[14px] font-medium text-[#84C221]">
+                  <motion.button
+                    whileHover={{ x: 5 }}
+                    className="mt-5 inline-flex items-center gap-1 text-[14px] font-medium text-[#84C221]"
+                  >
                     Learn More
                     <ChevronRight size={14} />
-                  </button>
-                </div>
+                  </motion.button>
+                </motion.div>
               );
             })}
           </div>
-        </div>
+        </motion.div>
 
         {/* Bottom Button */}
-        <div className="mt-12 text-center">
-          <button className="border border-[#84C221] px-10 py-3 text-[14px] text-[#84C221] transition hover:bg-[#84C221] hover:text-white">
+        <motion.div
+          className="mt-12 text-center"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <motion.button
+            whileHover={{
+              scale: 1.05,
+              backgroundColor: "#84C221",
+              color: "#ffffff",
+            }}
+            whileTap={{ scale: 0.95 }}
+            className="border border-[#84C221] px-10 py-3 text-[14px] text-[#84C221] transition"
+          >
             View All Services
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       </div>
     </section>
   );

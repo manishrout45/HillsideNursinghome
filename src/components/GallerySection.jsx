@@ -1,16 +1,11 @@
 // GallerySection.jsx
-
-import {
-  Activity,
-  Accessibility,
-  Ear,
-  BedDouble,
-  HeartHandshake,
-  UserRound,
-  Hospital,
-  Zap,
-  ShieldCheck,
+import { 
+  Activity, 
+  HeartHandshake, 
+  ShieldCheck, 
 } from "lucide-react";
+import { motion } from "framer-motion";
+
 
 const topImages = [
   "https://img.magnific.com/premium-photo/physiotherapy-training-band-with-old-man-doctor-stretching-rehabilitation-injury-medical-healing-healthcare-with-physiotherapist-patient-consulting-help-fitness_590464-189313.jpg?ga=GA1.1.367325703.1777638219&semt=ais_hybrid&w=740&q=80",
@@ -28,68 +23,158 @@ const bottomImages = [
 
 const services = [
   {
-    icon: Activity,
+    icon: "/assets/icons/physical-therapy.png",
     title: "Physiotherapy",
   },
   {
-    icon: Accessibility,
+    icon: "/assets/icons/occupational-therapy.png",
     title: "Occupational Therapy",
   },
   {
-    icon: Ear,
+    icon: "/assets/icons/speech-therapy.png",
     title: "Speech Therapy",
   },
   {
-    icon: BedDouble,
+    icon: "/assets/icons/RecoverySuites.png",
     title: "Recovery Suites",
   },
 ];
 
 const benefits = [
   {
-    icon: HeartHandshake,
+    icon: "/assets/icons/rehabilitation.png",
     title: "Patient Centric Care",
   },
   {
-    icon: UserRound,
+    icon: "/assets/icons/ExpertTherapists.png",
     title: "Expert Therapists",
   },
   {
-    icon: Hospital,
+    icon: "/assets/icons/AdvancedFacilities.png",
     title: "Advanced Facilities",
   },
   {
-    icon: Zap,
+    icon: "/assets/icons/FasterRecovery.png",
     title: "Faster Recovery",
   },
   {
-    icon: ShieldCheck,
+    icon: "/assets/icons/SupportEveryStep.png",
     title: "Support Every Step",
   },
 ];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: "easeOut",
+    },
+  },
+};
+
+const fadeLeft = {
+  hidden: { opacity: 0, x: -60 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+};
+
+const fadeRight = {
+  hidden: { opacity: 0, x: 60 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+};
+
+const staggerContainer = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const zoom = {
+  hidden: {
+    opacity: 0,
+    scale: 0.9,
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
 
 export default function GallerySection() {
   return (
     <section className="bg-white py-20">
       <div className="mx-auto max-w-7xl px-6">
-        {/* Heading */} 
-        <div className="max-w-3xl mx-auto text-center pb-6"> 
-          <span className="text-[#84C221] text-[18px] font-medium"> Our Gallery </span> 
-          <h2 className="mt-3 text-[42px] leading-[1.25] font-medium text-[#1f5f97]"> 
-            Explore Our Modern <br /> Healthcare Facilities 
-            </h2> <p className="mt-5 text-[15px] leading-7 text-[#9a9a9a]"> Take a glimpse into Hillside Nursing Home's state-of-the-art medical facilities, experienced healthcare professionals, patient care environment, and modern infrastructure dedicated to quality treatment. </p> </div>
+
+        {/* Heading */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="max-w-3xl mx-auto text-center pb-6"
+        >
+          <span className="text-[#84C221] text-[18px] font-medium">
+            Our Gallery
+          </span>
+
+          <h2 className="mt-3 text-[42px] leading-[1.25] font-medium text-[#1f5f97]">
+            Explore Our Modern
+            <br />
+            Healthcare Facilities
+          </h2>
+
+          <p className="mt-5 text-[15px] leading-7 text-[#9a9a9a]">
+            Take a glimpse into Hillside Nursing Home's state-of-the-art
+            medical facilities, experienced healthcare professionals,
+            patient care environment, and modern infrastructure dedicated
+            to quality treatment.
+          </p>
+        </motion.div>
 
         {/* Hero */}
-        <div className="grid lg:grid-cols-[420px_1fr] gap-6">
-          
+        <motion.div
+          className="grid lg:grid-cols-[420px_1fr] gap-6"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
 
-          <div className="relative overflow-hidden rounded-xl">
+          <motion.div
+            variants={fadeLeft}
+            className="relative overflow-hidden rounded-xl"
+          >
             <img
               src="https://img.magnific.com/premium-photo/fabric-textured-background_236836-5916.jpg?ga=GA1.1.367325703.1777638219&semt=ais_hybrid&w=740&q=80"
               className="h-full min-h-[500px] w-full object-cover"
+              alt=""
             />
 
             <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent p-10">
+
               <span className="text-[#84C221] font-semibold">
                 Rehabilitation
               </span>
@@ -101,109 +186,136 @@ export default function GallerySection() {
                 REHABILITATION
               </h2>
 
-              <div className="mt-10 space-y-6">
-
-                <div className="flex items-center gap-3">
-                  <Activity className="text-[#84C221]" />
-                  <span>Restoring Movement.</span>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <HeartHandshake className="text-[#84C221]" />
-                  <span>Rebuilding Lives.</span>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <ShieldCheck className="text-[#84C221]" />
-                  <span>Stronger Together.</span>
-                </div>
-
+              <div className="mt-10 space-y-6"> 
+                <div className="flex items-center gap-3"> 
+                  <Activity className="text-[#84C221]" /> 
+                  <span>Restoring Movement.</span> 
+                </div> 
+                  
+                <div className="flex items-center gap-3"> 
+                  <HeartHandshake className="text-[#84C221]" /> 
+                  <span>Rebuilding Lives.</span> 
+                </div> 
+                <div className="flex items-center gap-3"> 
+                  <ShieldCheck className="text-[#84C221]" /> 
+                  <span>Stronger Together.</span> 
+                </div> 
               </div>
+
             </div>
-          </div>
+          </motion.div>
 
           {/* Top Images */}
-          <div className="grid grid-cols-2 gap-4">
+
+          <motion.div
+            variants={staggerContainer}
+            className="grid grid-cols-2 gap-4"
+          >
+
             {topImages.map((img, i) => (
-              <div
+              <motion.div
                 key={i}
+                variants={zoom}
+                whileHover={{ scale: 1.03 }}
                 className="overflow-hidden rounded-xl"
               >
                 <img
                   src={img}
+                  alt=""
                   className="h-[242px] w-full object-cover hover:scale-110 duration-500"
                 />
-              </div>
+              </motion.div>
             ))}
-          </div>
 
-        </div>
+          </motion.div>
 
-        {/* Service Icons */}
-        <div className="mt-10 grid grid-cols-2 md:grid-cols-4 border rounded-xl overflow-hidden">
+        </motion.div>
+                {/* Service Icons */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="mt-10 grid grid-cols-2 md:grid-cols-4 border rounded-xl overflow-hidden"
+        >
 
-          {services.map((item, i) => {
-            const Icon = item.icon;
-
-            return (
-              <div
-                key={i}
-                className="flex flex-col items-center gap-3 border p-7 hover:bg-[#EEF7E3] transition"
-              >
-                <Icon
-                  size={36}
-                  className="text-[#1f5f97]"
-                />
-
-                <h3 className="text-center text-sm font-semibold text-[#1f5f97]">
-                  {item.title}
-                </h3>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Bottom Gallery */}
-        <div className="mt-10 grid md:grid-cols-4 gap-4">
-
-          {bottomImages.map((img, i) => (
+          {services.map((item, i) => (
             <div
               key={i}
+              className="flex flex-col items-center gap-4 border p-7 hover:bg-[#EEF7E3] transition duration-300"
+            >
+              <img
+                src={item.icon}
+                alt={item.title}
+                className="w-14 h-14 object-contain transition-transform duration-300 hover:scale-110"
+              />
+
+              <h3 className="text-center text-sm font-semibold text-[#1f5f97]">
+                {item.title}
+              </h3>
+            </div>
+          ))}
+
+        </motion.div>
+
+        {/* Bottom Gallery */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="mt-10 grid md:grid-cols-4 gap-4"
+        >
+
+          {bottomImages.map((img, i) => (
+            <motion.div
+              key={i}
+              variants={zoom}
+              whileHover={{ scale: 1.03 }}
               className="overflow-hidden rounded-xl"
             >
               <img
                 src={img}
+                alt=""
                 className="h-[220px] w-full object-cover hover:scale-110 duration-500"
               />
-            </div>
+            </motion.div>
           ))}
 
-        </div>
+        </motion.div>
 
         {/* Benefits */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="mt-10 grid grid-cols-2 md:grid-cols-5 border rounded-xl overflow-hidden"
+        >
 
-        <div className="mt-10 grid grid-cols-2 md:grid-cols-5 border rounded-xl overflow-hidden">
+          {benefits.map((item, i) => (
+            <motion.div
+              key={i}
+              variants={fadeUp}
+              whileHover={{
+                y: -6,
+                transition: { duration: 0.25 },
+              }}
+              className="flex flex-col items-center gap-4 border p-7 hover:bg-[#EEF7E3] transition duration-300"
+            >
+              <img
+                src={item.icon}
+                alt={item.title}
+                className="w-12 h-12 object-contain transition-transform duration-300 hover:scale-110"
+              />
 
-          {benefits.map((item, i) => {
-            const Icon = item.icon;
+              <span className="text-center text-sm font-medium text-[#1f5f97]">
+                {item.title}
+              </span>
+            </motion.div>
+          ))}
 
-            return (
-              <div
-                key={i}
-                className="flex flex-col items-center gap-3 border p-6 hover:bg-[#EEF7E3] transition"
-              >
-                <Icon
-                  size={34}
-                  className="text-[#84C221]"
-                />
-
-                <span className="text-center text-sm font-medium text-[#1f5f97]">
-                  {item.title}
-                </span>
-              </div>
-            );
-          })}
-        </div>
+        </motion.div>
 
       </div>
     </section>

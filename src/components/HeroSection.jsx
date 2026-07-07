@@ -1,6 +1,34 @@
 // HeroSection.jsx
 
 import { Play, Stethoscope, Clock3, Cross } from "lucide-react";
+import { motion } from "framer-motion";
+
+const fadeLeft = {
+  hidden: { opacity: 0, x: -80 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.8 },
+  },
+};
+
+const fadeRight = {
+  hidden: { opacity: 0, x: 80 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.8 },
+  },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 60 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7 },
+  },
+};
 
 export default function HeroSection() {
   return (
@@ -10,7 +38,13 @@ export default function HeroSection() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 lg:pt-16 pb-24 lg:pb-32">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             {/* Left Content */}
-            <div className="relative z-10 text-center lg:text-left">
+            <motion.div
+              className="relative z-10 text-center lg:text-left"
+              variants={fadeLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+>
               <h1 className="text-4xl font-semibold leading-tight text-[#1f5f97] sm:text-5xl lg:text-6xl">
                 Trusted Healthcare
                 <br />
@@ -46,16 +80,22 @@ export default function HeroSection() {
                   </span>
                 </button>
               </div>
-            </div>
+            </motion.div>
 
             {/* Right Image */}
-            <div className="relative flex justify-center lg:justify-end">
+            <motion.div
+              className="relative flex justify-center lg:justify-end"
+              variants={fadeRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+            >
               <span className="absolute left-4 top-0 hidden text-6xl font-light text-[#84C221] lg:block">
                 +
               </span>
 
               <img
-                src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=900"
+                src="/assets/images/HeroImg.png"
                 alt="Healthcare"
                 className="w-full max-w-xs object-contain sm:max-w-sm md:max-w-md lg:max-w-lg"
               />
@@ -63,7 +103,7 @@ export default function HeroSection() {
               <span className="absolute bottom-8 left-0 hidden text-5xl font-light text-[#84C221] lg:block">
                 +
               </span>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -72,7 +112,14 @@ export default function HeroSection() {
       <div className="relative z-20 mx-auto -mt-12 max-w-7xl px-4 sm:px-6 lg:-mt-20 lg:px-8">
         <div className="grid overflow-hidden rounded-2xl shadow-2xl md:grid-cols-3">
           {/* Card 1 */}
-          <div className="bg-[#84C221] px-8 py-10 text-center text-white">
+          <motion.div
+            className="bg-[#84C221] px-8 py-10 text-center text-white"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ delay: 0 }}
+          >
             <Clock3
               size={50}
               strokeWidth={1.2}
@@ -87,10 +134,17 @@ export default function HeroSection() {
               Immediate medical attention from our experienced healthcare
               professionals whenever you need urgent care.
             </p>
-          </div>
+          </motion.div>
 
           {/* Card 2 */}
-          <div className="border-y border-gray-200 bg-[#f5f5f5] px-8 py-10 text-center md:border-x md:border-y-0">
+          <motion.div
+            className="border-y border-gray-200 bg-[#f5f5f5] px-8 py-10 text-center md:border-x md:border-y-0"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
             <Stethoscope
               size={50}
               strokeWidth={1.2}
@@ -105,10 +159,17 @@ export default function HeroSection() {
               Our qualified doctors, nurses, and specialists provide
               personalized treatment with compassion and clinical excellence.
             </p>
-          </div>
+          </motion.div>
 
           {/* Card 3 */}
-          <div className="bg-[#f5f5f5] px-8 py-10 text-center">
+          <motion.div
+            className="bg-[#f5f5f5] px-8 py-10 text-center"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+          >
             <Cross
               size={50}
               strokeWidth={1.2}
@@ -123,7 +184,7 @@ export default function HeroSection() {
               Equipped with modern diagnostic technology to ensure accurate
               diagnosis and effective treatment for every patient.
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
