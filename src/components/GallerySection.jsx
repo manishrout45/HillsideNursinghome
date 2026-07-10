@@ -8,10 +8,10 @@ import { motion } from "framer-motion";
 
 
 const topImages = [
-  "https://img.magnific.com/premium-photo/physiotherapy-training-band-with-old-man-doctor-stretching-rehabilitation-injury-medical-healing-healthcare-with-physiotherapist-patient-consulting-help-fitness_590464-189313.jpg?ga=GA1.1.367325703.1777638219&semt=ais_hybrid&w=740&q=80",
-  "https://www.ahu.edu/sites/default/files/styles/fc_800x533/public/media/occupational-therapy-swiss-ball-2000x1333px.jpg?h=bd81ee90&itok=Pk-sV7ZO",
-  "https://images.squarespace-cdn.com/content/v1/56257cd5e4b046286a8a63f4/1447957834938-R1L6KBV0E7KZY6OGX149/speech-therapy-san-diego",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTavRXSYRtVRNNFZ6FqXig9w_QknWi6EpF7pXt7ngJgRzlFFR6v24pDRME&s=10",
+  "https://img.magnific.com/free-photo/general-practitioner-consulting-patient-reviewing-x-ray-test-results_482257-124004.jpg?ga=GA1.1.367325703.1777638219&semt=ais_hybrid&w=740&q=80",
+  "https://img.magnific.com/premium-photo/doctor-is-injecting-insulin-hospital-patients_432430-94.jpg?ga=GA1.1.367325703.1777638219&semt=ais_hybrid&w=740&q=80",
+  "https://img.magnific.com/premium-photo/scientists-with-microscopes-working-laboratory_380164-289778.jpg?ga=GA1.1.367325703.1777638219&semt=ais_hybrid&w=740&q=80",
+  "https://img.magnific.com/premium-photo/two-women-lab-coats-are-looking-tablet-with-lab-titled-lable_979520-160107.jpg?ga=GA1.1.367325703.1777638219&semt=ais_hybrid&w=740&q=80",
 ];
 
 const bottomImages = [
@@ -163,48 +163,17 @@ export default function GallerySection() {
           viewport={{ once: true, amount: 0.15 }}
         >
 
-          <motion.div
-            variants={fadeLeft}
-            className="relative overflow-hidden rounded-xl"
-          >
-            <img
-              src="https://img.magnific.com/premium-photo/fabric-textured-background_236836-5916.jpg?ga=GA1.1.367325703.1777638219&semt=ais_hybrid&w=740&q=80"
-              className="h-full min-h-[500px] w-full object-cover"
-              alt=""
-            />
-
-            <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent p-10">
-
-              <span className="text-[#84C221] font-semibold">
-                Rehabilitation
-              </span>
-
-              <h2 className="mt-3 text-4xl font-bold leading-tight text-[#1f5f97]">
-                PHYSIOTHERAPY
-                &
-                <br />
-                REHABILITATION
-              </h2>
-
-              <div className="mt-10 space-y-6"> 
-                <div className="flex items-center gap-3"> 
-                  <Activity className="text-[#84C221]" /> 
-                  <span>Restoring Movement.</span> 
-                </div> 
-                  
-                <div className="flex items-center gap-3"> 
-                  <HeartHandshake className="text-[#84C221]" /> 
-                  <span>Rebuilding Lives.</span> 
-                </div> 
-                <div className="flex items-center gap-3"> 
-                  <ShieldCheck className="text-[#84C221]" /> 
-                  <span>Stronger Together.</span> 
-                </div> 
-              </div>
-
-            </div>
-          </motion.div>
-
+<motion.div
+  variants={zoom}
+  whileHover={{ scale: 1.03 }}
+  className="overflow-hidden rounded-xl"
+>
+  <img
+    src="/assets/images/HeroImg2.jpeg"
+    alt="Hospital Facility"
+    className="h-full min-h-[500px] w-full object-cover transition duration-500 hover:scale-110"
+  />
+</motion.div>
           {/* Top Images */}
 
           <motion.div
@@ -230,7 +199,7 @@ export default function GallerySection() {
           </motion.div>
 
         </motion.div>
-                {/* Service Icons */}
+                {/* Service Icons 
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -258,7 +227,7 @@ export default function GallerySection() {
 
         </motion.div>
 
-        {/* Bottom Gallery */}
+        {/* Bottom Gallery 
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -284,7 +253,7 @@ export default function GallerySection() {
 
         </motion.div>
 
-        {/* Benefits */}
+        {/* Benefits 
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -313,9 +282,9 @@ export default function GallerySection() {
                 {item.title}
               </span>
             </motion.div>
-          ))}
+          ))} 
 
-        </motion.div>
+        </motion.div>*/}
 
       </div>
     </section>

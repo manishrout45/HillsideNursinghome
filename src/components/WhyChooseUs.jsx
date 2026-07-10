@@ -110,7 +110,6 @@ export default function WhyChooseUs() {
               className="mt-3 text-[38px] font-medium leading-[1.2] text-white lg:text-[44px]"
             >
               Trusted Healthcare with
-              <br />
               Compassion & Excellence
             </motion.h2>
 
@@ -183,7 +182,7 @@ export default function WhyChooseUs() {
             viewport={{ once: true, amount: 0.3 }}
           >
             <motion.img
-              src="/assets/images/HSN-3.jpg"
+              src="https://img.magnific.com/free-photo/nurses-getting-ready-work-day_23-2149309977.jpg?ga=GA1.1.367325703.1777638219&semt=ais_hybrid&w=740&q=80"
               alt="Care Service"
               className="h-[540px] w-[380px] object-cover"
               whileHover={{

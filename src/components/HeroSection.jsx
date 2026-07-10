@@ -1,7 +1,6 @@
-// HeroSection.jsx
-
+import { useState, useEffect } from "react";
 import { Play, Stethoscope, Clock3, Cross } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const fadeLeft = {
   hidden: { opacity: 0, x: -80 },
@@ -30,13 +29,31 @@ const fadeUp = {
   },
 };
 
+// Hero Images
+const heroImages = [
+  "/assets/images/HeroImg1.jpeg",
+  "/assets/images/HeroImg2.jpeg",
+  "/assets/images/HeroImg3.jpeg",
+];
+
 export default function HeroSection() {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % heroImages.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative overflow-hidden">
       {/* Hero */}
       <div className="bg-[#EEF7E3]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 lg:pt-16 pb-24 lg:pb-32">
           <div className="grid items-center gap-12 lg:grid-cols-2">
+
             {/* Left Content */}
             <motion.div
               className="relative z-10 text-center lg:text-left"
@@ -44,7 +61,7 @@ export default function HeroSection() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
->
+            >
               <h1 className="text-4xl font-semibold leading-tight text-[#1f5f97] sm:text-5xl lg:text-6xl">
                 Trusted Healthcare
                 <br />
@@ -54,10 +71,11 @@ export default function HeroSection() {
               </h1>
 
               <p className="mx-auto mt-6 max-w-lg text-[15px] leading-7 text-[#7f9b9c] lg:mx-0">
-                At Hillside Nursing Home, we are dedicated to providing quality
-                healthcare with experienced doctors, modern facilities, and
-                compassionate care. Your health, comfort, and recovery remain
-                our highest priority every day.
+                At Hillside Nursing Home, we are dedicated to providing
+                quality healthcare with experienced doctors, modern
+                facilities, and compassionate care. Your health,
+                comfort, and recovery remain our highest priority
+                every day.
               </p>
 
               <div className="mt-8 flex flex-col items-center gap-5 sm:flex-row sm:justify-center lg:justify-start">
@@ -81,9 +99,8 @@ export default function HeroSection() {
                 </button>
               </div>
             </motion.div>
-
-            {/* Right Image */}
-            <motion.div
+                        {/* Right Image Slider */}
+                        <motion.div
               className="relative flex justify-center lg:justify-end"
               variants={fadeRight}
               initial="hidden"
@@ -94,23 +111,62 @@ export default function HeroSection() {
                 +
               </span>
 
-              <img
-                src="/assets/images/HeroImg.png"
-                alt="Healthcare"
-                className="w-full max-w-xs object-contain sm:max-w-sm md:max-w-md lg:max-w-lg"
-              />
+              <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-[420px] sm:h-[480px] lg:h-[560px]">
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={currentImage}
+                    src={heroImages[currentImage]}
+                    alt={`Healthcare ${currentImage + 1}`}
+                    className="absolute inset-0 h-full w-full object-contain"
+                    initial={{
+                      opacity: 0,
+                      x: 120,
+                      scale: 0.96,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      x: 0,
+                      scale: 1,
+                    }}
+                    exit={{
+                      opacity: 0,
+                      x: -120,
+                      scale: 0.96,
+                    }}
+                    transition={{
+                      duration: 0.7,
+                      ease: "easeInOut",
+                    }}
+                  />
+                </AnimatePresence>
+              </div>
 
               <span className="absolute bottom-8 left-0 hidden text-5xl font-light text-[#84C221] lg:block">
                 +
               </span>
+
+              {/* Slider Dots */}
+              <div className="absolute -bottom-10 left-1/2 flex -translate-x-1/2 gap-3">
+                {heroImages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentImage(index)}
+                    className={`h-3 rounded-full transition-all duration-300 ${
+                      currentImage === index
+                        ? "w-8 bg-[#84C221]"
+                        : "w-3 bg-gray-300 hover:bg-[#84C221]/60"
+                    }`}
+                  />
+                ))}
+              </div>
             </motion.div>
           </div>
         </div>
       </div>
-
-      {/* Feature Cards */}
-      <div className="relative z-20 mx-auto -mt-12 max-w-7xl px-4 sm:px-6 lg:-mt-20 lg:px-8">
+            {/* Feature Cards */}
+            <div className="relative z-20 mx-auto -mt-12 max-w-7xl px-4 sm:px-6 lg:-mt-20 lg:px-8">
         <div className="grid overflow-hidden rounded-2xl shadow-2xl md:grid-cols-3">
+
           {/* Card 1 */}
           <motion.div
             className="bg-[#84C221] px-8 py-10 text-center text-white"
@@ -131,8 +187,8 @@ export default function HeroSection() {
             </h3>
 
             <p className="mt-4 text-sm leading-7 text-white/90">
-              Immediate medical attention from our experienced healthcare
-              professionals whenever you need urgent care.
+              Immediate medical attention from our experienced
+              healthcare professionals whenever you need urgent care.
             </p>
           </motion.div>
 
@@ -157,7 +213,8 @@ export default function HeroSection() {
 
             <p className="mt-4 text-sm leading-7 text-gray-500">
               Our qualified doctors, nurses, and specialists provide
-              personalized treatment with compassion and clinical excellence.
+              personalized treatment with compassion and clinical
+              excellence.
             </p>
           </motion.div>
 
@@ -181,10 +238,12 @@ export default function HeroSection() {
             </h3>
 
             <p className="mt-4 text-sm leading-7 text-gray-500">
-              Equipped with modern diagnostic technology to ensure accurate
-              diagnosis and effective treatment for every patient.
+              Equipped with modern diagnostic technology to ensure
+              accurate diagnosis and effective treatment for every
+              patient.
             </p>
           </motion.div>
+
         </div>
       </div>
     </section>

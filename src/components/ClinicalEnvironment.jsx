@@ -10,11 +10,11 @@ const environments = [
       "Advanced intensive care unit equipped with modern life-support systems.",
   },
   {
-    title: "Operation Theatre",
+    title: "Sterilization (CSSD, ETO)",
     image:
       "https://img.magnific.com/free-photo/interior-view-operating-room_1170-2254.jpg?ga=GA1.1.367325703.1777638219&semt=ais_hybrid&w=740&q=80",
     description:
-      "Well-equipped modular operation theatres for safe surgical procedures.",
+      "Advanced sterilization facilities with CSSD and ETO systems ensuring the highest standards of infection control and patient safety.",
   },
   {
     title: "General Ward",
@@ -31,16 +31,16 @@ const environments = [
       "24×7 emergency services with rapid medical response and expert care.",
   },
   {
-    title: "Patient Rooms",
+    title: "Advance Imaging",
     image:
-      "https://img.magnific.com/premium-photo/checklist-bed-doctor-with-patient-hospital-healthcare-consultation-medical-service-clipboard-discussion-cardiology-surgeon-with-woman-postoperative-checkup-clinic_590464-456454.jpg?ga=GA1.1.367325703.1777638219&semt=ais_hybrid&w=740&q=80",
+      "https://img.magnific.com/free-photo/hispanic-doctor-nurse-discussing-xray-while-standing-together-corridor-hospital_662251-3075.jpg?ga=GA1.1.367325703.1777638219&semt=ais_hybrid&w=740&q=80",
     description:
-      "Clean, spacious, and comfortable rooms for a peaceful recovery.",
+      "State-of-the-art imaging services providing accurate diagnostic support for faster and more effective treatment planning.",
   },
   {
     title: "Nursing Station",
     image:
-      "https://img.magnific.com/free-photo/retired-person-using-wheelchair-talking-with-senior-doctor-appointment-while-being-helped-by-professional-nurse-private-clinic-older-man-living-with-disability-busy-hospital-reception_482257-46754.jpg?ga=GA1.1.367325703.1777638219&semt=ais_hybrid&w=740&q=80",
+      "https://img.magnific.com/premium-photo/people-tablet-iv-bag-hospital-healthcare-drip-treatment-medicine-infusion-wellness-set-up-tech-nurses-with-medical-equipment-patient-care-antibiotics-electrolytes-line_590464-568155.jpg?ga=GA1.1.367325703.1777638219&semt=ais_hybrid&w=740&q=80",
     description:
       "Dedicated nursing staff ensuring continuous monitoring and support.",
   },

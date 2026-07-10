@@ -70,7 +70,7 @@ export default function AboutSection() {
             viewport={{ once: true, amount: 0.3 }}
           >
             <img
-              src="https://img.magnific.com/premium-photo/any-discomfort-all-full-length-shot-young-male-physiotherapist-assisting-senior-patient-recovery_590464-12104.jpg?ga=GA1.1.367325703.1777638219&semt=ais_hybrid&w=740&q=80"
+              src="/assets/images/HeroImg1.jpeg"
               alt="Nursing Care"
               className="w-[380px] h-[500px] object-cover"
             />

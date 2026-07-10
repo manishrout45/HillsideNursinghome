@@ -26,7 +26,7 @@ const equipments = [
   {
     title: "Vessel Sealing Systems",
     image:
-      "https://www.westerntrading.in/wp-content/uploads/2019/09/ligasure-impact-instrument-b.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH2w3Agi7zO6LCFT1KQlIZ9MPiT01-gXMK6Pq9-rK8F86tDE2g5HoUwWI&s=10",
     description:
       "Modern vessel sealing technology ensuring secure hemostasis with reduced blood loss and faster recovery.",
   },

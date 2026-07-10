@@ -162,7 +162,7 @@ export default function Footer() {
                 transition={{ delay: 0.3 }}
               >
                 <MapPin className="mt-1 shrink-0" size={18} />
-                <span>Khandagiri, Bhubaneswar</span>
+                <span> 92, Khandagiri Square, Amrit Nagar, Dumuduma, Bhubaneswar, Odisha 751030</span>
               </motion.div>
 
               <motion.div
@@ -206,7 +206,7 @@ export default function Footer() {
         >
           <div className="flex flex-col items-center justify-between gap-3 text-center text-[13px] text-white/90 lg:flex-row">
             <p>
-              Copyright © 2023 Hillside Nursinghome. All Rights Reserved.
+              Copyright © 2026 Hillside Nursinghome. All Rights Reserved.
             </p>
 
             <div className="flex items-center gap-3">

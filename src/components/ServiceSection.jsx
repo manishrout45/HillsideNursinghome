@@ -1,10 +1,10 @@
 import {
-  MessageCircleHeart,
+  FlaskConical,
   Ambulance,
-  Dumbbell,
-  HandHelping,
-  HeartHandshake,
-  PackagePlus,
+  ShieldPlus,
+  Bed,
+  BadgeDollarSign,
+  Users,
   TimerReset,
   ChevronRight,
 } from "lucide-react";
@@ -12,52 +12,54 @@ import { motion } from "framer-motion";
 
 const services = [
   {
-    title: "Speech Therapy",
-    icon: MessageCircleHeart,
+    title: "On-site Lab & Pathology",
+    icon: FlaskConical,
   },
   {
     type: "highlight",
-    title: "24/7 Emergency Care",
-    subtitle: "Always Here For You",
+    title: "Advanced Ambulance Service",
+    subtitle: "",
     description:
-      "Our experienced nursing team provides compassionate round-the-clock support for patients and their families.",
+      "Fully equipped ambulances with trained medical staff for fast emergency response.",
     icon: Ambulance,
   },
   {
-    title: "Physical Therapy",
-    icon: Dumbbell,
+    title: "Advanced Modular OTs",
+    icon: ShieldPlus,
   },
   {
-    title: "Occupational Therapy",
-    icon: HandHelping,
+    title: "Dedicated ICU",
+    icon: Bed,
   },
   {
-    title: "Nursing Care Services",
-    icon: HeartHandshake,
+    title: "Special Fee Consultation for Sr. Citizens",
+    icon: BadgeDollarSign,
   },
   {
-    title: "Nursing Home Supplies",
-    icon: PackagePlus,
+    title: "Full-Time Surgical Assistance",
+    icon: Users,
   },
 ];
 
 const serviceDescriptions = {
-  "Speech Therapy":
-    "Specialized therapy programs designed to improve speech, language, communication, and swallowing abilities.",
+  "On-site Lab & Pathology":
+    "Advanced laboratory and pathology services with accurate diagnostics and quick reporting for better treatment.",
 
-  "Physical Therapy":
-    "Personalized rehabilitation programs to restore mobility, strength, and overall physical function.",
+  "Advanced Ambulance Service":
+    "24/7 fully equipped ambulance service ensuring safe and timely emergency transportation.",
 
-  "Occupational Therapy":
-    "Helping patients regain independence in daily living activities through expert therapeutic care.",
+  "Advanced Modular OTs":
+    "Modern modular operation theatres designed for advanced surgical procedures with the highest safety standards.",
 
-  "Nursing Care Services":
-    "Compassionate nursing support delivered by trained professionals with 24/7 patient monitoring.",
+  "Dedicated ICU":
+    "Well-equipped Intensive Care Unit providing continuous monitoring and critical care by experienced specialists.",
 
-  "Nursing Home Supplies":
-    "Providing quality medical equipment and essential healthcare supplies for patient comfort.",
+  "Special Fee Consultation for Sr. Citizens":
+    "Affordable consultation services exclusively for senior citizens with compassionate and personalized healthcare.",
+
+  "Full-Time Surgical Assistance":
+    "Experienced surgical team providing comprehensive assistance before, during, and after every surgical procedure.",
 };
-
 // Animation Variants
 const containerVariants = {
   hidden: {},
@@ -160,88 +162,99 @@ export default function ServiceSection() {
           viewport={{ once: true, amount: 0.15 }}
         >
           <div className="grid md:grid-cols-3">
-            {services.map((service, index) => {
-              if (service.type === "highlight") {
-                return (
-                  <motion.div
-                    key={index}
-                    variants={zoomIn}
-                    whileHover={{
-                      scale: 1.03,
-                    }}
-                    transition={{ duration: 0.3 }}
-                    className="flex min-h-[340px] flex-col items-center justify-center bg-[#84C221] px-8 text-center text-white"
-                  >
-                    <span className="text-sm uppercase tracking-[4px] text-white/80">
-                      {service.subtitle}
-                    </span>
+          {services.map((service, index) => {
+            const Icon = service.icon;
 
-                    <h3 className="mt-4 text-3xl font-semibold">
-                      {service.title}
-                    </h3>
-
-                    <p className="mt-5 max-w-xs text-[15px] leading-7 text-white/90">
-                      {service.description}
-                    </p>
-
-                    <motion.button
-                      whileHover={{
-                        scale: 1.05,
-                        backgroundColor: "#ffffff",
-                        color: "#84C221",
-                      }}
-                      whileTap={{ scale: 0.96 }}
-                      className="mt-8 inline-flex items-center gap-2 border border-white px-6 py-3 text-sm transition"
-                    >
-                      Book Appointment
-                      <ChevronRight size={16} />
-                    </motion.button>
-                  </motion.div>
-                );
-              }
-
-              const Icon = service.icon;
-
+            if (service.type === "highlight") {
               return (
                 <motion.div
                   key={index}
-                  variants={fadeUp}
-                  whileHover={{
-                    y: -8,
-                    scale: 1.02,
-                    boxShadow: "0 20px 40px rgba(0,0,0,.08)",
-                  }}
+                  variants={zoomIn}
+                  whileHover={{ scale: 1.03 }}
                   transition={{ duration: 0.3 }}
-                  className="border border-gray-200 bg-[#f7f7f7] px-8 py-10 text-center"
+                  className="flex min-h-[340px] flex-col items-center justify-center bg-[#84C221] px-8 text-center text-white"
                 >
+                  {/* White Icon */}
                   <motion.div
-                    className="mb-5 flex justify-center text-[#84C221]"
+                    className="mb-6 flex justify-center text-white"
                     whileHover={{
                       rotate: 8,
                       scale: 1.15,
                     }}
                   >
-                    <Icon size={48} strokeWidth={1.3} />
+                    <Icon size={58} strokeWidth={1.5} />
                   </motion.div>
 
-                  <h3 className="text-[20px] font-medium text-[#1f5f97]">
+                  {service.subtitle && (
+                    <span className="text-sm uppercase tracking-[4px] text-white/80">
+                      {service.subtitle}
+                    </span>
+                  )}
+
+                  <h3 className="text-2xl font-semibold">
                     {service.title}
                   </h3>
 
-                  <p className="mt-3 text-[14px] leading-7 text-[#8b8b8b]">
-                    {serviceDescriptions[service.title]}
+                  <p className="mt-5 max-w-xs text-[15px] leading-7 text-white/90">
+                    {service.description}
                   </p>
 
                   <motion.button
-                    whileHover={{ x: 5 }}
-                    className="mt-5 inline-flex items-center gap-1 text-[14px] font-medium text-[#84C221]"
+                    whileHover={{
+                      scale: 1.05,
+                      backgroundColor: "#ffffff",
+                      color: "#84C221",
+                    }}
+                    whileTap={{ scale: 0.96 }}
+                    className="mt-8 inline-flex items-center gap-2 border border-white px-6 py-3 text-sm transition"
                   >
-                    Learn More
-                    <ChevronRight size={14} />
+                    Book Appointment
+                    <ChevronRight size={16} />
                   </motion.button>
                 </motion.div>
               );
-            })}
+            }
+
+            return (
+              <motion.div
+                key={index}
+                variants={fadeUp}
+                whileHover={{
+                  y: -8,
+                  scale: 1.02,
+                  boxShadow: "0 20px 40px rgba(0,0,0,.08)",
+                }}
+                transition={{ duration: 0.3 }}
+                className="border border-gray-200 bg-[#f7f7f7] px-8 py-10 text-center"
+              >
+                <motion.div
+                  className="mb-5 flex justify-center text-[#84C221]"
+                  whileHover={{
+                    rotate: 8,
+                    scale: 1.15,
+                  }}
+                >
+                  <Icon size={48} strokeWidth={1.3} />
+                </motion.div>
+
+                <h3 className="text-[20px] font-medium text-[#1f5f97]">
+                  {service.title}
+                </h3>
+
+                <p className="mt-3 text-[14px] leading-7 text-[#8b8b8b]">
+                  {serviceDescriptions[service.title]}
+                </p>
+
+                <motion.button
+                  whileHover={{ x: 5 }}
+                  className="mt-5 inline-flex items-center gap-1 text-[14px] font-medium text-[#84C221]"
+                >
+                  Learn More
+                  <ChevronRight size={14} />
+                </motion.button>
+              </motion.div>
+            );
+          })}
           </div>
         </motion.div>
 

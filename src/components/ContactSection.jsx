@@ -96,7 +96,7 @@ export default function ContactSection() {
             className="flex justify-center lg:justify-start"
           >
             <motion.img
-              src="https://img.magnific.com/free-photo/medium-shot-physiotherapist-checking-leg_23-2149047551.jpg?ga=GA1.1.367325703.1777638219&semt=ais_hybrid&w=740&q=80"
+              src="https://img.magnific.com/premium-photo/scientist-conducting-research-his-desk_1254878-13051.jpg?ga=GA1.1.367325703.1777638219&semt=ais_hybrid&w=740&q=80"
               alt="Appointment"
               className="h-[470px] w-[380px] object-cover"
               whileHover={{

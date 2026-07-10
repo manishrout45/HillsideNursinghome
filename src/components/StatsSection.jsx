@@ -42,6 +42,11 @@ const progress = [
 ];
 
 function Counter({ value, animate }) {
+  // Don't animate values like "24/7"
+  if (value.includes("/")) {
+    return value;
+  }
+
   const [count, setCount] = useState(0);
 
   const number = parseInt(value.replace(/\D/g, ""));
@@ -68,8 +73,6 @@ function Counter({ value, animate }) {
 
     return () => clearInterval(timer);
   }, [animate, number]);
-
-  if (number === 0) return value;
 
   return (
     <>
@@ -204,7 +207,7 @@ export default function StatsSection() {
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <div className="flex justify-center lg:justify-start">
               <img
-                src="https://img.magnific.com/premium-photo/senior-man-physiotherapy-leg-with-stretching-join-recovery-support-rehabilitation-bed-consultation-patient-with-exercise-help-knee-pain-inflammation-joint-strength_590464-422005.jpg?ga=GA1.1.367325703.1777638219&semt=ais_hybrid&w=740&q=80"
+                src="https://img.magnific.com/free-photo/male-working-as-paediatrician_23-2151696318.jpg?ga=GA1.1.367325703.1777638219&semt=ais_hybrid&w=740&q=80"
                 alt="Home Care"
                 className="w-[400px] h-[300px] object-cover"
               />
