@@ -18,12 +18,12 @@ export default function FloatingButtons() {
         >
           <span className="text-sm text-gray-700">Chat with us</span>
           <a
-            href="https://wa.me/916370197899"
+            href="https://wa.me/919090863974"
             target="_blank"
             rel="noopener noreferrer"
             className="text-green-600 font-semibold"
           >
-            +91 63701 97899
+            +91 9090863974
           </a>
         </div>
 
@@ -49,10 +49,10 @@ export default function FloatingButtons() {
         >
           <span className="text-sm text-gray-700">Call us</span>
           <a
-            href="tel:+916370197899"
+            href="tel:+919090863974"
             className="text-blue-600 font-semibold"
           >
-            +91 63701 97899
+            +91 90908 63974
           </a>
         </div>
 
