@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import {
   UserRound,
-  Stethoscope,
+  HeartHandshake,
   Bed,
   Clock3,
   Plus,
@@ -15,12 +15,12 @@ const stats = [
     label: "Patients Treated",
     active: false,
   },
-  {
-    icon: Stethoscope,
-    value: "25+",
-    label: "Expert Doctors",
-    active: true,
-  },
+    {
+      icon: HeartHandshake,
+      value: "100%",
+      label: "Patient-Centered Care",
+      active: true,
+    },
   {
     icon: Bed,
     value: "50+",

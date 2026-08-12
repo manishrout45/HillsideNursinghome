@@ -73,7 +73,7 @@ const fadeUp = {
 
 export default function WhyChooseUs() {
   return (
-    <section className="relative overflow-hidden bg-[#1f5f97] py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-[white] py-20 lg:py-24">
       {/* Decorative Plus */}
       <motion.div
         initial={{ opacity: 0, scale: 0.5, rotate: -90 }}
@@ -91,87 +91,99 @@ export default function WhyChooseUs() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid items-center gap-10 lg:grid-cols-2">
           {/* Left Content */}
+          <div className="relative">
+  {/* Background Shape */}
+  <div
+    className="
+      absolute
+      -left-20
+      -top-20
+      -bottom-20
+      w-[820px]
+      rounded-r-[520px]
+      bg-[#1F5F97]
+      -z-0
+    "
+  />
+
+  {/* Left Content */}
+  <motion.div
+    className="relative z-10 max-w-[460px]"
+    variants={containerVariants}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.25 }}
+  >
+    <motion.span
+      variants={fadeLeft}
+      className="text-[16px] font-medium text-[#84C221]"
+    >
+      Why Choose Hillside Nursing Home
+    </motion.span>
+
+    <motion.h2
+      variants={fadeLeft}
+      className="mt-3 text-[38px] font-medium leading-[1.2] text-white lg:text-[44px]"
+    >
+      Trusted Healthcare with
+      Compassion & Excellence
+    </motion.h2>
+
+    <motion.p
+      variants={fadeLeft}
+      className="mt-4 text-[15px] leading-7 text-white/90"
+    >
+      Hillside Nursing Home combines experienced healthcare
+      professionals, modern medical facilities, and compassionate
+      patient care to provide safe, effective, and personalized
+      treatment for every individual and family.
+    </motion.p>
+
+    {/* Feature Cards */}
+    <motion.div
+      variants={containerVariants}
+      className="mt-8 space-y-3"
+    >
+      {features.map((item, index) => (
+        <motion.div
+          key={index}
+          variants={fadeUp}
+          whileHover={{
+            x: 8,
+            scale: 1.02,
+            boxShadow: "0 20px 40px rgba(0,0,0,.15)",
+          }}
+          transition={{ duration: 0.3 }}
+          className="flex items-center gap-4 bg-white px-5 py-5"
+        >
           <motion.div
-            className="max-w-[460px]"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.25 }}
+            whileHover={{ rotate: 360 }}
+            transition={{ duration: 0.6 }}
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#84C221]"
           >
-            <motion.span
-              variants={fadeLeft}
-              className="text-[16px] font-medium text-[#84C221]"
-            >
-              Why Choose Hillside Nursing Home
-            </motion.span>
-
-            <motion.h2
-              variants={fadeLeft}
-              className="mt-3 text-[38px] font-medium leading-[1.2] text-white lg:text-[44px]"
-            >
-              Trusted Healthcare with
-              Compassion & Excellence
-            </motion.h2>
-
-            <motion.p
-              variants={fadeLeft}
-              className="mt-4 text-[15px] leading-7 text-white/90"
-            >
-              Hillside Nursing Home combines experienced healthcare
-              professionals, modern medical facilities, and compassionate
-              patient care to provide safe, effective, and personalized
-              treatment for every individual and family.
-            </motion.p>
-
-            {/* Feature Cards */}
-            <motion.div
-              variants={containerVariants}
-              className="mt-8 space-y-3"
-            >
-              {features.map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeUp}
-                  whileHover={{
-                    x: 8,
-                    scale: 1.02,
-                    boxShadow: "0 20px 40px rgba(0,0,0,.15)",
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className="flex items-center gap-4 bg-white px-5 py-5"
-                >
-                  {/* Icon */}
-                  <motion.div
-                    whileHover={{
-                      rotate: 360,
-                    }}
-                    transition={{
-                      duration: 0.6,
-                    }}
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#84C221]"
-                  >
-                    <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20">
-                      <CheckCheck
-                        size={14}
-                        strokeWidth={2.5}
-                        className="text-white"
-                      />
-                    </div>
-                  </motion.div>
-
-                  <div>
-                    <h3 className="text-[18px] font-medium text-[#84C221]">
-                      {item.title}
-                    </h3>
-
-                    <p className="mt-1 text-[14px] leading-6 text-[#9a9a9a]">
-                      {item.desc}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
+            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20">
+              <CheckCheck
+                size={14}
+                strokeWidth={2.5}
+                className="text-white"
+              />
+            </div>
           </motion.div>
+
+          <div>
+            <h3 className="text-[18px] font-medium text-[#84C221]">
+              {item.title}
+            </h3>
+
+            <p className="mt-1 text-[14px] leading-6 text-[#9a9a9a]">
+              {item.desc}
+            </p>
+          </div>
+        </motion.div>
+      ))}
+    </motion.div>
+  </motion.div>
+</div>
 
           {/* Right Image */}
           <motion.div

@@ -9,6 +9,9 @@ import FloatingButtons from "./components/FloatingButtons";
 // Page imports
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Service from "./pages/Service";
+import Contact from "./pages/Contact";
+import ServicesDetails from "./pages/ServicesDetails";
 
 // AOS for scroll animations
 import AOS from "aos";
@@ -29,6 +32,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/service" element={<Service />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/services/:slug" element={<ServicesDetails />} />
       </Routes>
 
       <Footer />
