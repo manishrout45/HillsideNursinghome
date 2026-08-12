@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Play, Stethoscope, Clock3, Cross } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const fadeLeft = {
   hidden: { opacity: 0, x: -80 },
@@ -49,9 +50,11 @@ export default function HeroSection() {
 
   return (
     <section className="relative overflow-hidden">
+
       {/* Hero */}
       <div className="bg-[#EEF7E3]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 lg:pt-16 pb-24 lg:pb-32">
+        <div className="mx-auto max-w-7xl px-4 pt-12 pb-24 sm:px-6 lg:px-8 lg:pt-16 lg:pb-32">
+
           <div className="grid items-center gap-12 lg:grid-cols-2">
 
             {/* Left Content */}
@@ -79,12 +82,21 @@ export default function HeroSection() {
               </p>
 
               <div className="mt-8 flex flex-col items-center gap-5 sm:flex-row sm:justify-center lg:justify-start">
-                <button className="rounded-md border border-[#84C221] px-8 py-3 text-sm font-medium text-[#84C221] transition hover:bg-[#84C221] hover:text-white">
-                  Book Appointment
-                </button>
 
-                <button className="flex items-center gap-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full border-4 border-[#1f5f97] bg-[#84C221] shadow-lg">
+                {/* Book Appointment */}
+                <Link
+                  to="/contact"
+                  className="rounded-md border border-[#84C221] px-8 py-3 text-sm font-medium text-[#84C221] transition hover:bg-[#84C221] hover:text-white"
+                >
+                  Book Appointment
+                </Link>
+
+                {/* Learn More */}
+                <Link
+                  to="/about"
+                  className="flex items-center gap-3 group"
+                >
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full border-4 border-[#1f5f97] bg-[#84C221] shadow-lg transition group-hover:scale-105">
                     <Play
                       size={16}
                       fill="white"
@@ -93,14 +105,16 @@ export default function HeroSection() {
                     />
                   </div>
 
-                  <span className="text-sm font-medium text-[#1d1d1d]">
-                    Watch Intro
+                  <span className="text-sm font-medium text-[#1d1d1d] transition group-hover:text-[#1f5f97]">
+                    Learn More
                   </span>
-                </button>
+                </Link>
+
               </div>
             </motion.div>
-                        {/* Right Image Slider */}
-                        <motion.div
+
+            {/* Right Image Slider */}
+            <motion.div
               className="relative flex justify-center lg:justify-end"
               variants={fadeRight}
               initial="hidden"
@@ -111,7 +125,7 @@ export default function HeroSection() {
                 +
               </span>
 
-              <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-[420px] sm:h-[480px] lg:h-[560px]">
+              <div className="relative h-[420px] w-full max-w-xs sm:h-[480px] sm:max-w-sm md:max-w-md lg:h-[560px] lg:max-w-lg">
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={currentImage}
@@ -151,6 +165,7 @@ export default function HeroSection() {
                   <button
                     key={index}
                     onClick={() => setCurrentImage(index)}
+                    aria-label={`Go to slide ${index + 1}`}
                     className={`h-3 rounded-full transition-all duration-300 ${
                       currentImage === index
                         ? "w-8 bg-[#84C221]"
@@ -160,11 +175,13 @@ export default function HeroSection() {
                 ))}
               </div>
             </motion.div>
+
           </div>
         </div>
       </div>
-            {/* Feature Cards */}
-            <div className="relative z-20 mx-auto -mt-12 max-w-7xl px-4 sm:px-6 lg:-mt-20 lg:px-8">
+
+      {/* Feature Cards */}
+      <div className="relative z-20 mx-auto -mt-12 max-w-7xl px-4 sm:px-6 lg:-mt-20 lg:px-8">
         <div className="grid overflow-hidden rounded-2xl shadow-2xl md:grid-cols-3">
 
           {/* Card 1 */}
@@ -246,6 +263,7 @@ export default function HeroSection() {
 
         </div>
       </div>
+
     </section>
   );
 }

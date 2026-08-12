@@ -22,6 +22,10 @@ export default function Navbar() {
       dropdown: true,
     },
     {
+      name: "Gallery",
+      path: "/gallery",
+    },
+    {
       name: "Contact",
       path: "/contact",
     },

@@ -173,19 +173,7 @@ export default function EquipmentSection() {
                       {item.description}
                     </p>
 
-                    <motion.button
-                      whileHover={{ x: 8 }}
-                      whileTap={{ scale: 0.96 }}
-                      className="mt-6 inline-flex w-fit items-center gap-2 text-sm font-semibold text-[#84C221]"
-                    >
-                      Learn More
-                      <motion.span
-                        whileHover={{ x: 4 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <ArrowRight size={18} />
-                      </motion.span>
-                    </motion.button>
+                  
                   </div>
                 </div>
               </motion.div>

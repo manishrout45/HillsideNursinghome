@@ -188,6 +188,14 @@ export default function ServicesDetails() {
   const Icon = service.icon;
 
   return (
+    <>      {/* ================= Hero Section ================= */}
+      <section className="bg-gradient-to-b from-white to-lime-100 py-20">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#165c99]">
+            Details
+          </h1>
+        </div>
+      </section>
     <section className="bg-white py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4">
 
@@ -327,5 +335,6 @@ export default function ServicesDetails() {
         </div>
       </div>
     </section>
+    </>
   );
 }
